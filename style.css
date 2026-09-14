@@ -969,6 +969,68 @@ body::after {
   color: var(--primary);
 }
 
+/* Floating Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(18, 18, 20, 0.85);
+  color: var(--primary);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--primary);
+  color: #08080a;
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px var(--primary-glow);
+}
+
+.scroll-top-btn svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.scroll-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+  }
+  .scroll-top-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 /* High Quality Print Stylesheet */
 @media print {
   @page {
@@ -998,7 +1060,7 @@ body::after {
     line-height: 1.4;
   }
   
-  body::before, body::after, .glow-bg-right, .action-buttons, .print-tip, .project-links, .toast, #tech-showcase {
+  body::before, body::after, .glow-bg-right, .action-buttons, .print-tip, .project-links, .toast, #tech-showcase, .scroll-top-btn {
     display: none !important;
   }
   
